@@ -5,33 +5,27 @@ import 'package:montracker/src/home/presentation/widgets/expenses_incomes.dart';
 
 import '../../domain/models/cash_flow.dart';
 import '../bloc/home_bloc.dart';
-
-part 'home_bottom_navigation_bar.dart';
-part 'home_app_bar.dart';
+import 'home_app_bar.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const _HomeAppBar(),
-      body: BlocBuilder<HomeBloc, HomeState>(
-        builder: (_, state) {
-          return state.when(
-            notInitialized: _notInitialized,
-            error: _error,
-            initialized: (cashflow, balance, incomes, expenses) => _initialized(
-              context,
-              cashFlow: cashflow,
-              balance: balance,
-              incomes: incomes,
-              expenses: expenses,
-            ),
-          );
-        },
-      ),
-      bottomNavigationBar: const _HomeBottomNavigationBar(),
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (_, state) {
+        return state.when(
+          notInitialized: _notInitialized,
+          error: _error,
+          initialized: (cashflow, balance, incomes, expenses) => _initialized(
+            context,
+            cashFlow: cashflow,
+            balance: balance,
+            incomes: incomes,
+            expenses: expenses,
+          ),
+        );
+      },
     );
   }
 
@@ -57,6 +51,8 @@ class Home extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const HomeAppBar(),
+          const SizedBox(height: 20),
           SizedBox(
             width: width,
             child: Column(
@@ -78,11 +74,11 @@ class Home extends StatelessWidget {
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ExpensesIncones(
+              ExpensesIncomes(
                 type: TypeCashFlow.income,
                 money: incomes,
               ),
-              ExpensesIncones(
+              ExpensesIncomes(
                 type: TypeCashFlow.expense,
                 money: expenses,
               ),
