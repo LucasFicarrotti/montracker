@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:montracker/src/home/domain/models/cash_flow.dart';
 
-class ExpensesIncones extends StatelessWidget {
+class ExpensesIncomes extends StatelessWidget {
   final TypeCashFlow type;
   final double money;
 
-  const ExpensesIncones({
+  const ExpensesIncomes({
     super.key,
     required this.type,
     required this.money,
