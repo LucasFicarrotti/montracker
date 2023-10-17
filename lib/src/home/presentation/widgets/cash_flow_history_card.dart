@@ -38,7 +38,7 @@ class CashFlowHistoryCard extends StatelessWidget {
                     ),
                     backgroundColor: type == TypeCashFlow.income
                         ? primaryColor.withOpacity(.20)
-                        : errorColor,
+                        : errorColor.withOpacity(.20),
                   ),
                   const SizedBox(width: 15),
                   Column(

@@ -1,7 +1,7 @@
-part of 'home.dart';
+import 'package:flutter/material.dart';
 
-class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _HomeAppBar();
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,6 +9,7 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     final titleMediumStyle = Theme.of(context).textTheme.titleMedium;
 
     return AppBar(
+      titleSpacing: 0,
       title: Row(
         children: [
           CircleAvatar(
